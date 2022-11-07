@@ -13,7 +13,7 @@ contract Enoch {
 
     // Reusing MrMorales too frequently runs
     // the risk of getting them blacklisted.
-    function summonMorale() public returns (MrMorale morale){
+    function summonMorale() public returns (MrMorale morale) {
         morale = new MrMorale();
         emit MoraleSummoned(morale);
     }
