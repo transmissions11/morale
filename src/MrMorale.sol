@@ -3,7 +3,6 @@ pragma solidity 0.8.15;
 
 import "solmate/tokens/ERC721.sol";
 
-import "./LibStepper.sol";
 import "./BigStepper.sol";
 
 contract MrMorale {
