@@ -13,8 +13,9 @@ contract Enoch {
 
     // Reusing MrMorales too frequently runs
     // the risk of getting them blacklisted.
-    function summonMorale() public {
-        emit MoraleSummoned(new MrMorale());
+    function summonMorale() public returns (MrMorale morale) {
+        morale = new MrMorale();
+        emit MoraleSummoned(morale);
     }
 
     function findStepper(MrMorale morale, ERC721 token, uint256 id, uint256 price, address sellooor)
@@ -27,7 +28,7 @@ contract Enoch {
                 bytes1(0xFF),
                 address(morale),
                 keccak256(abi.encode(price, sellooor)),
-                keccak256(abi.encodePacked(type(BigStepper).creationCode, abi.encode(token, id)))
+                keccak256(abi.encodePacked(type(BigStepper).creationCode, abi.encode(morale, token, id)))
             )
         ).fromLast20Bytes();
     }

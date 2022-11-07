@@ -13,6 +13,7 @@ contract MrMorale {
 
         buyoooor = msg.sender;
         new BigStepper{salt: keccak256(abi.encode(price, selloooor))}(
+            this,
             token,
             id
         );
@@ -24,6 +25,7 @@ contract MrMorale {
     function delist(ERC721 token, uint256 id, uint256 price) public {
         buyoooor = msg.sender;
         new BigStepper{salt: keccak256(abi.encode(price, msg.sender))}(
+            this,
             token,
             id
         );
