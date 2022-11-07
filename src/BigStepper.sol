@@ -2,14 +2,13 @@
 pragma solidity 0.8.15;
 
 import "solmate/tokens/ERC721.sol";
-import "./Enoch.sol";
 
-// Transformation, I must had a thousand lives and like three thousand wives
+import "./MrMorale.sol";
 
-Enoch constant ENOCH = Enoch(address(0xBEEF)); // TODO
+MrMorale constant morale = MrMorale(address(0xBEEF)); // TODO
 
 contract BigStepper {
     constructor(ERC721 token, uint256 id) {
-        token.transferFrom(address(this), ENOCH.buyoooor(), id);
+        token.transferFrom(address(this), morale.buyoooor(), id);
     }
 }

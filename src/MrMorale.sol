@@ -2,12 +2,11 @@
 pragma solidity 0.8.15;
 
 import "solmate/tokens/ERC721.sol";
+
 import "./LibStepper.sol";
 import "./BigStepper.sol";
 
-// i couldnt sleep last night because i felt this shit
-
-contract Enoch {
+contract MrMorale {
     address public buyoooor;
 
     mapping(ERC721 => mapping(uint256 => mapping(uint256 => address))) sellooors;

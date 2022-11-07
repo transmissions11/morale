@@ -2,7 +2,7 @@
 pragma solidity >=0.8.0;
 
 import "solmate/tokens/ERC721.sol";
-import {Bytes32AddressLib} from "solmate/utils/Bytes32AddressLib.sol";
+import "solmate/utils/Bytes32AddressLib.sol";
 
 import "./BigStepper.sol";
 
