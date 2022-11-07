@@ -15,7 +15,7 @@ contract Enoch {
         emit MoraleSummoned(morale = new MrMorale());
     }
 
-    function findStepper(MrMorale morale, ERC721 token, uint256 id, uint256 price, address sellooor)
+    function findStepper(MrMorale morale, ERC721 token, uint256 id, uint256 price, address selloooor)
         public
         pure
         returns (address)
@@ -25,7 +25,7 @@ contract Enoch {
                 abi.encodePacked(
                     bytes1(0xFF),
                     address(morale),
-                    keccak256(abi.encode(price, sellooor)),
+                    keccak256(abi.encode(price, selloooor)),
                     keccak256(abi.encodePacked(type(BigStepper).creationCode, abi.encode(morale, token, id)))
                 )
             )
