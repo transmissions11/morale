@@ -7,11 +7,13 @@ import {Bytes32AddressLib} from "solmate/utils/Bytes32AddressLib.sol";
 import "./BigStepper.sol";
 
 library LibStepper {
+    using Bytes32AddressLib for bytes32;
+
     function findStepper(
         ERC721 token,
         uint256 id,
         uint256 price
-    ) internal returns (address) {
+    ) internal view returns (address) {
         return
             keccak256(
                 abi.encodePacked(
@@ -20,14 +22,14 @@ library LibStepper {
                     // Creator:
                     address(this),
                     // Salt:
-                    keccak256(abi.encode(token, id)),
+                    keccak256(abi.encode(price)),
                     // Bytecode hash:
                     keccak256(
                         abi.encodePacked(
                             // Deployment bytecode:
                             type(BigStepper).creationCode,
                             // Constructor arguments:
-                            abi.encode(token, id, price)
+                            abi.encode(token, id)
                         )
                     )
                 )
