@@ -9,8 +9,9 @@ import "./MrMorale.sol";
 contract Enoch {
     event MoraleSummoned(MrMorale indexed morale);
 
-    // Reusing MrMorales too frequently runs
-    // the risk of getting them blacklisted.
+    // Reusing MrMorales too frequently runs the risk of getting them blacklisted by
+    // contracts who check the warmness of known MrMorale addresses. By using a variety
+    // of MrMorale addresses, we can make checking the warmness of all MrMorales infeasible.
     function summonMorale() public returns (MrMorale morale) {
         emit MoraleSummoned(morale = new MrMorale());
     }
