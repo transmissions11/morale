@@ -7,15 +7,12 @@ import "solmate/utils/Bytes32AddressLib.sol";
 import "./MrMorale.sol";
 
 contract Enoch {
-    using Bytes32AddressLib for bytes32;
-
     event MoraleSummoned(MrMorale indexed morale);
 
     // Reusing MrMorales too frequently runs
     // the risk of getting them blacklisted.
-    function summonMorale() public returns (MrMorale morale) {
-        morale = new MrMorale();
-        emit MoraleSummoned(morale);
+    function summonMorale() public {
+        emit MoraleSummoned(new MrMorale());
     }
 
     function findStepper(MrMorale morale, ERC721 token, uint256 id, uint256 price, address sellooor)
@@ -23,13 +20,15 @@ contract Enoch {
         pure
         returns (address)
     {
-        return keccak256(
-            abi.encodePacked(
-                bytes1(0xFF),
-                address(morale),
-                keccak256(abi.encode(price, sellooor)),
-                keccak256(abi.encodePacked(type(BigStepper).creationCode, abi.encode(morale, token, id)))
+        return Bytes32AddressLib.fromLast20Bytes(
+            keccak256(
+                abi.encodePacked(
+                    bytes1(0xFF),
+                    address(morale),
+                    keccak256(abi.encode(price, sellooor)),
+                    keccak256(abi.encodePacked(type(BigStepper).creationCode, abi.encode(token, id)))
+                )
             )
-        ).fromLast20Bytes();
+        );
     }
 }
