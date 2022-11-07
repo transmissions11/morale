@@ -9,12 +9,12 @@ import "./BigStepper.sol";
 library LibStepper {
     using Bytes32AddressLib for bytes32;
 
-    function findStepper(ERC721 token, uint256 id, uint256 price) internal view returns (address) {
+    function findStepper(ERC721 token, uint256 id, uint256 price, address sellooor) internal view returns (address) {
         return keccak256(
             abi.encodePacked(
                 bytes1(0xFF),
                 address(this),
-                keccak256(abi.encode(price)),
+                keccak256(abi.encode(price, sellooor)),
                 keccak256(abi.encodePacked(type(BigStepper).creationCode, abi.encode(token, id)))
             )
         ).fromLast20Bytes();
