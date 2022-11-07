@@ -10,9 +10,7 @@ contract MrMorale {
     address public buyoooor;
 
     function buy(ERC721 token, uint256 id, uint256 price, address selloooor) public payable {
-        require(msg.value >= price);
-
-        payable(selloooor).transfer(msg.value);
+        payable(selloooor).transfer(price);
 
         buyoooor = msg.sender;
         new BigStepper{salt: keccak256(abi.encode(price, selloooor))}(
