@@ -3,12 +3,12 @@ pragma solidity 0.8.15;
 
 import "forge-std/Test.sol";
 
-import {MockBlacklistERC721} from "./utils/MockBlacklistERC721.sol";
+import {MockBlacklistERC721} from "./mocks/MockBlacklistERC721.sol";
 
 import {Enoch} from "../src/Enoch.sol";
 import {MrMorale} from "../src/MrMorale.sol";
 
-contract MrMoraleTest is Test {
+contract MoraleTest is Test {
     Enoch enoch;
     MrMorale morale;
 
