@@ -20,7 +20,7 @@ contract MoraleTest is Test {
 
     function setUp() public {
         enoch = new Enoch();
-        morale = enoch.summonMorale();
+        morale = enoch.summonMorale(bytes32(0));
 
         erc721A = new MockBlacklistERC721("A", "A");
         erc721A = new MockBlacklistERC721("B", "B");
