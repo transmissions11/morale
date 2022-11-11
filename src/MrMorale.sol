@@ -12,8 +12,9 @@ contract MrMorale {
         payable(selloooor).transfer(price);
 
         buyoooor = msg.sender;
-        new BigStepper{salt: keccak256(abi.encode(price, selloooor))}(
+        new BigStepper{salt: keccak256(abi.encode(price))}(
             this,
+            selloooor,
             token,
             id
         );
@@ -22,10 +23,15 @@ contract MrMorale {
         // gg no re.
     }
 
-    function delist(ERC721 token, uint256 id, uint256 price) public {
+    // Normally, to delist you can simply revoke approval from the stepper.
+    // However in case you have some sort of public permit approval to the
+    // stepper that you have no way to revoke, you can use this function to
+    // transfer the token to yourself and brick the stepper contract forever.
+    function brick(ERC721 token, uint256 id, uint256 price) public {
         buyoooor = msg.sender;
-        new BigStepper{salt: keccak256(abi.encode(price, msg.sender))}(
+        new BigStepper{salt: keccak256(abi.encode(price))}(
             this,
+            msg.sender,
             token,
             id
         );
