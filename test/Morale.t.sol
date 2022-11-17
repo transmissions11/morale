@@ -38,8 +38,9 @@ contract MoraleTest is Test {
         address stepper = enoch.findStepper(morale, erc721A, id, price, addr1);
 
         vm.prank(addr1);
-        erc721A.transferFrom(addr1, stepper, id);
-        assertEq(erc721A.ownerOf(id), stepper);
+        erc721A.approve(stepper, id);
+        assertEq(erc721A.ownerOf(id), addr1);
+        assertEq(erc721A.getApproved(id), stepper);
 
         uint256 balanceBefore = addr1.balance;
 
@@ -51,5 +52,6 @@ contract MoraleTest is Test {
         assertEq(balanceBefore, balanceAfter - price);
 
         assertEq(erc721A.ownerOf(id), addr2);
+        assertEq(erc721A.getApproved(id), address(0));
     }
 }

@@ -6,7 +6,7 @@ import "solmate/tokens/ERC721.sol";
 import "./MrMorale.sol";
 
 contract BigStepper {
-    constructor(MrMorale morale, ERC721 token, uint256 id) {
-        token.transferFrom(address(this), morale.buyoooor(), id);
+    constructor(MrMorale morale, address selloooor, ERC721 token, uint256 id) {
+        token.transferFrom(selloooor, morale.buyoooor(), id);
     }
 }

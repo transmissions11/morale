@@ -26,8 +26,8 @@ contract Enoch {
                 abi.encodePacked(
                     bytes1(0xFF),
                     address(morale),
-                    keccak256(abi.encode(price, selloooor)),
-                    keccak256(abi.encodePacked(type(BigStepper).creationCode, abi.encode(morale, token, id)))
+                    keccak256(abi.encode(price)),
+                    keccak256(abi.encodePacked(type(BigStepper).creationCode, abi.encode(morale, selloooor, token, id)))
                 )
             )
         );
